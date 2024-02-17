@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+:root {
+    --line-border-fill: #3498db;
+    --line-border-empty: #e0e0e0;
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    font: 16px/1.5 Muli, sans-serif;
+    background-color: #f6f7fb;
+    /* hide the content that not fit in parent element box in horz or vert */
+    overflow: hidden;
+    /* this two properties postion the progress bar in the middle of screen */
+    align-items: center;
+    justify-content: center;
+    /* take whole viewport of the screen */
+    height: 100vh;
+
+}
+
+.container {
+    text-align: center;
+}
+
+
+/* this section we defined the progress bar */
+/* the status of the bar befor and after we click next */
+/* -------------------------------------------------- */
+.progress-container {
+    display: flex;
+    max-width: 100%;
+    width: 350px;
+    /* move the button with 30px bottom */
+    margin-bottom: 30px;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* this represent the progress bar in the before we click the next btn */
+.progress-container::before {
+    background-color: var(--line-border-empty);
+    /* add the content to be visialbe */
+    content: '';
+    /* postition the progress bar to the center */
+    position: absolute;
+    top:50%;
+    left:0%;
+    /* must be couple of px to be visiable */
+    height: 4px;
+    /* show the current progress */
+    width: 100%;
+    /* MUST BE CHECKED IN THE MDN */
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+.progress {
+    background-color: var(--line-border-fill);
+    /* postition the progress bar to the center */
+    position: absolute;
+    top:50%;
+    left:0%;
+    /* must be couple of px to be visiable */
+    height: 4px;
+    /* show the current progress,this will be changed by js*/
+    width: 0%;
+    /* MUST BE CHECKED IN THE MDN */
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: 0.4s ease;
+
+}
+
+
+/* this section we defined the circuls and their property */
+/* -------------------------------------------------- */
+.circle.active {
+    border: 3px solid var(--line-border-fill);
+}
+
+
+.circle {
+    display: flex;
+    /* the easiest way to align number in the circles is to use flex and jc and ai */
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: 3px solid var(--line-border-empty);
+    transition: .4s ease;
+
+
+}
+
+
+/* this section we defined the button and their property */
+/* -------------------------------------------------- */
+button.btn {
+    font-family: inherit;
+    color: white;
+    background-color: var(--line-border-fill);
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 8px 30px;
+    margin: 5px;
+    
+}
+
+.btn:active{
+    transform: scale(0.98);
+}
+
+.btn:focus{
+    outline: 0;
+}
+
+
+/* on this way you make button inactive */
+.btn:disabled {
+    background-color: var(--line-border-empty);
+    cursor: not-allowed;
+
+}
